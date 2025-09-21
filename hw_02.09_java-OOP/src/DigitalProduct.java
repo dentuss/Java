@@ -2,9 +2,9 @@ public class DigitalProduct extends Product
 {
     private double fileSize;
 
-    public DigitalProduct(String name, String brand, double price, double fileSize)
+    public DigitalProduct(int id, String name, String brand, double price, double fileSize)
     {
-        super(name, brand, price);
+        super(id, name, brand, price);
         this.fileSize = fileSize;
     }
 

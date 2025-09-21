@@ -1,14 +1,21 @@
 public abstract class Product implements Purchasable
 {
+    private int id;
     private String name;
     private String brand;
     private double price;
 
-    public Product(String name, String brand, double price)
+    public Product(int id, String name, String brand, double price)
     {
+        this.id = id;
         this.name = name;
         this.brand = brand;
         this.price = price;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getName()
@@ -44,6 +51,6 @@ public abstract class Product implements Purchasable
     @Override
     public String toString()
     {
-        return brand + " " + name + " ($" + price + ")";
+        return "[" + id + "] " + brand + " " + name + " ($" + price + ")";
     }
 }

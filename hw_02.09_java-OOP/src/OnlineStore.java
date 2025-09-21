@@ -34,4 +34,31 @@ public class OnlineStore
             }
         }
     }
+
+    public Product findProductById(int id) throws ProductNotFoundException
+    {
+        for (Product p : ProductCatalog.products)
+        {
+            if (p.getId() == id)
+            {
+                return p;
+            }
+        }
+        throw new ProductNotFoundException("Product with ID " + id + " not found.");
+    }
+
+    public static class ProductCatalog
+    {
+        private static List<Product> products = new ArrayList<>();
+
+        public static void addProduct(Product product)
+        {
+            products.add(product);
+        }
+
+        public static List<Product> getProducts()
+        {
+            return products;
+        }
+    }
 }
