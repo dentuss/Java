@@ -2,25 +2,22 @@ public class Main
 {
     public static void main(String[] args)
     {
-        User u1 = new User("Alice", 1);
+        PhysicalProduct laptop = new PhysicalProduct("Laptop", "Dell", 1200, 2.5);
+        DigitalProduct ebook = new DigitalProduct("E-book", "Amazon", 15, 5.2);
 
-        Cart cart1 = new Cart();
-        cart1.addProduct(new Product("Tablet", "Apple", 999));
-        cart1.addProduct(new Product("Monitor", "LG", 350));
+        Cart cart = new Cart();
+        cart.addProduct(laptop);
+        cart.addProduct(ebook);
 
-        u1.addCart(cart1);
+        User user = new User("TEST", 1);
+        user.addCart(cart);
 
         OnlineStore store = new OnlineStore();
-        store.addUser(u1);
+        store.addUser(user);
 
-        for (Product p : cart1.getProducts())
-        {
-            System.out.println(p);
-        }
+        Purchasable[] items = { laptop, ebook };
+        store.purchaseAll(items);
 
-        int totalProducts = OnlineStore.getTotalProductsInAllCarts(store.getUsers());
-        System.out.println("Total products in all carts: " + totalProducts);
-
-        System.out.println("Initial catalog: " + OnlineStore.getInitialCatalog());
+        System.out.println("Total in cart: $" + cart.getTotalPrice());
     }
 }

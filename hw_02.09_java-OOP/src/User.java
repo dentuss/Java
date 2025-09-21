@@ -7,21 +7,27 @@ public class User
     private int userId;
     private List<Cart> carts;
 
-    public User(String name, int userId, List<Cart> carts)
+    public User(String name, int userId)
     {
         this.name = name;
         this.userId = userId;
-        this.carts = carts;
+        this.carts = new ArrayList<>();
     }
 
-    public User(String name, int userId)
+    public String getName()
     {
-        this(name, userId, new ArrayList<>()); // delegates
+        return name;
     }
 
-    public String getName() { return name; }
-    public int getUserId() { return userId; }
-    public List<Cart> getCarts() { return carts; }
+    public int getUserId()
+    {
+        return userId;
+    }
+
+    public List<Cart> getCarts()
+    {
+        return carts;
+    }
 
     public void addCart(Cart cart)
     {

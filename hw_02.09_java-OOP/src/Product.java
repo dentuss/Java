@@ -1,4 +1,4 @@
-public class Product implements AutoCloseable
+public abstract class Product implements Purchasable
 {
     private String name;
     private String brand;
@@ -11,14 +11,20 @@ public class Product implements AutoCloseable
         this.price = price;
     }
 
-    public Product(String name, String brand)
+    public String getName()
     {
-        this(name, brand, 0.0);
+        return name;
     }
 
-    public String getName() { return name; }
-    public String getBrand() { return brand; }
-    public double getPrice() { return price; }
+    public String getBrand()
+    {
+        return brand;
+    }
+
+    public double getPrice()
+    {
+        return price;
+    }
 
     public void setPrice(double price)
     {
@@ -26,13 +32,14 @@ public class Product implements AutoCloseable
         {
             this.price = price;
         }
+        else
+        {
+            throw new IllegalArgumentException("Price must be non-negative");
+        }
     }
 
     @Override
-    public void close()
-    {
-        System.out.println("Product " + name + " is being disposed manually.");
-    }
+    public abstract void purchase();
 
     @Override
     public String toString()
